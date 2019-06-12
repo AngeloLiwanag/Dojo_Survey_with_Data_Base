@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+    {% if messages %}                            <!-- check if there are any messages -->
+        {% for message in messages %}            <!-- loop through the messages -->
+            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="/submitted_survey" method = "post">
+        <table class="table">
+                <tr>
+                    <td>Your Name: </td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Dojo Location:</td>
+                        <td><select name="location" id="">
+                            <option value="San Jose">San Jose</option>
+                            <option value="Costa Mesa">Costa Mesa</option>
+                            <option value="Burbank">Brubank</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Favorate Language:</td>
+                        <td><select name="language" id="">
+                                <option value="Python">Python</option>
+                                <option value="HTML">HTML</option>
+                                <option value="CSS">CSS</option>
+                            </select></td>
+                    </tr>
+            <tbody>
+        </table>
+        <p>Comment (optional):<p>
+        <textarea class="container" name="comment" id="" cols="10" rows="10"></textarea>
+        <input class="btn btn-outline-dark" type="submit" name="submit" id="">  
+    </form>
+</body>
+</html>
